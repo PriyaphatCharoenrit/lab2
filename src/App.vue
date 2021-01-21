@@ -1,10 +1,16 @@
 <template>
   <div id="app">
+    {{ counter }}<hr/>
+    <button @click="counter=counter+1">Click1</button><br/>
+    <button @click="clicked">Click2</button>
+
 
     <h1>{{ message}}</h1><br/>
-    <span v-text="message"></span>
-    <hr/>
+    <span v-text="message"></span><br/>
 
+    <input type="text" v-model="message" />
+
+    <hr/>
     <h1 v-show="isShow">Hello!</h1>
     
     <hr/>
@@ -23,7 +29,14 @@
     <a v-bind:href="urlSKRU">SKRU</a>
     <hr/>
     <img v-bind:src="require('@/assets/' + pictureName +'.png')" width ="200px "/>
-
+    <hr/>
+    <select v-model="message">
+      <option value="Bread">Bread</option>
+      <option value="Candy">Candy</option>
+      <option value="Coke">Coke</option>
+    </select>
+    <hr/>
+    <textarea v-model="message"></textarea>
 
   </div>
 </template>
@@ -38,6 +51,7 @@ export default {
   },
   data(){
     return{
+      counter:0,
       pictureName:"logo",
       urlSKRU:"http://www.skru.ac.th",
       message:"Hello world!",
@@ -47,6 +61,11 @@ export default {
         {"id":2,"name":"Trump","Salary": 10000} ,
         {"id":3,"name":"Peter","Salary": 99000} 
       ],
+    }
+  },
+  methods:{
+    clicked: function(){
+      this.counter=this.counter+2;
     }
   },
 }
